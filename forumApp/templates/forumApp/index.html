@@ -1,0 +1,13 @@
+<h1>Message Board</h1>
+<p><a href="compose/">Make a statement</a></p>
+{% if statement_list %}
+	{% for statement in statement_list %}
+		<div class="statement" id="statement{{forloop.counter}}">
+			<h3>{{ statement.author }} said:</h3>
+			<p>{{statement.content}}</p>
+			<h5>{{statement.date}}</h5>
+		</div>
+	{%endfor%}
+{%else%}
+	<h1>Nothing has been said yet.</h1>
+{%endif%}

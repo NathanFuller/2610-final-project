@@ -1,4 +1,7 @@
 from __future__ import unicode_literals
+import datetime
+import django.utils.timezone
+
 
 from django.db import models
 
@@ -8,7 +11,7 @@ class Statement(models.Model):
 	author = models.CharField(max_length=32)
 	content = models.TextField(max_length=1000)
 	votes = models.IntegerField(default=0)
-	date = models.DateTimeField('date of posting')
+	date = models.DateTimeField('date of posting', default=django.utils.timezone.now)
 	def sortableDate(self):
 		return self.date.strftime('%y%m%d%H%M%S')
 	def __str__(self):

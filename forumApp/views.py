@@ -1,7 +1,9 @@
+import re
 from django.shortcuts import render
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from .models import Statement
 from django.core.urlresolvers import reverse
+from django.utils.datastructures import MultiValueDictKeyError
 
 
 # Create your views here.
@@ -21,3 +23,17 @@ def save(request):
 	Statement.objects.create(author=request.POST['auth'], content=request.POST['content'])
 	return HttpResponseRedirect('/forumApp/')
 
+def vote(request):
+	try:
+		sid = request.POST['up']
+		up = True
+	except MultiValueDictKeyError:
+		sid = request.POST['down']
+		up = False
+	s = Statement.objects.get(pk=sid)
+	if up:
+		s.votes+=1
+	else:
+		s.votes-=1
+	s.save()
+	return HttpResponseRedirect('/forumApp/#'+str(sid))

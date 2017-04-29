@@ -6,9 +6,10 @@
 {% if statement_list %}
 	{% for statement in statement_list %}
 		<div class="statement" id="statement{{forloop.counter}}">
+			<a name="{{statement.pk}}"></a>
 			<h3>{{ statement.author }} said:</h3>
 			<p>{{statement.content}}</p>
-			<p><a><img height=30px width=30px src="{% static 'forumApp/images/upvote.png' %}"/></a>{{statement.votes}}<a><img height=30px width=30px src="{% static 'forumApp/images/downvote.png' %}"/></a></p>
+			<form action="vote" method="POST">{%csrf_token%}<button type="submit" name="up" value="{{statement.pk}}"><img height=30px width=30px src="{% static 'forumApp/images/upvote.png' %}"/></button> {{statement.votes}} <button type="submit" name="down" value="{{statement.pk}}"><img height=30px width=30px src="{% static 'forumApp/images/downvote.png' %}"/></button></form>
 			<h5>{{statement.date}}</h5>
 		</div>
 	{%endfor%}

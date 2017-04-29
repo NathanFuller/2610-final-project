@@ -1,3 +1,6 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'forumApp/myStyle.css' %}"/>
+
 <h1>Message Board</h1>
 <p><a href="compose/">Make a statement</a></p>
 {% if statement_list %}
@@ -5,6 +8,7 @@
 		<div class="statement" id="statement{{forloop.counter}}">
 			<h3>{{ statement.author }} said:</h3>
 			<p>{{statement.content}}</p>
+			<p><a><img height=30px width=30px src="{% static 'forumApp/images/upvote.png' %}"/></a>{{statement.votes}}<a><img height=30px width=30px src="{% static 'forumApp/images/downvote.png' %}"/></a></p>
 			<h5>{{statement.date}}</h5>
 		</div>
 	{%endfor%}

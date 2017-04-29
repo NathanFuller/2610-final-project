@@ -20,4 +20,3 @@ class Statement(models.Model):
 		else:
 			return self.content
 
-#note: s.date = datetime.datetime.now()

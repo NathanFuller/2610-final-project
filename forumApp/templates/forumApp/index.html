@@ -1,16 +1,32 @@
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'forumApp/myStyle.css' %}"/>
+<script src="{% static 'forumApp/myScript.js' %}"></script>
 
-<h1>Message Board</h1>
-<p><a href="compose/">Make a statement</a></p>
+<div id="header">
+	<h1>Message Board</h1>
+	<p><a href="compose/">Make a statement</a></p>
+</div>
 {% if statement_list %}
 	{% for statement in statement_list %}
 		<div class="statement" id="statement{{forloop.counter}}">
 			<a name="{{statement.pk}}"></a>
 			<h3>{{ statement.author }} said:</h3>
-			<p>{{statement.content}}</p>
-			<form action="vote" method="POST">{%csrf_token%}<button type="submit" name="up" value="{{statement.pk}}"><img height=30px width=30px src="{% static 'forumApp/images/upvote.png' %}"/></button> {{statement.votes}} <button type="submit" name="down" value="{{statement.pk}}"><img height=30px width=30px src="{% static 'forumApp/images/downvote.png' %}"/></button></form>
-			<h5>{{statement.date}}</h5>
+			<p class="content">{{statement.content}}</p>
+			<div class="voteDiv">
+				<form action="vote" method="POST">
+					{%csrf_token%}
+					<button type="submit" name="up" value="{{statement.pk}}">
+						<img height=30px width=30px src="{% static 'forumApp/images/upvote.png' %}"/>
+					</button>
+					<span class="votecounter">
+						{{statement.votes}}
+					</span>
+					<button type="submit" name="down" value="{{statement.pk}}">
+						<img height=30px width=30px src="{% static 'forumApp/images/downvote.png' %}"/>
+					</button>
+				</form>
+			</div>
+			<h5 class="dateTime">{{statement.changeableDate}}</h5>
 		</div>
 	{%endfor%}
 {%else%}

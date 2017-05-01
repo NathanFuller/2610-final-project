@@ -12,8 +12,8 @@ class Statement(models.Model):
 	content = models.TextField(max_length=1000)
 	votes = models.IntegerField(default=0)
 	date = models.DateTimeField('date of posting', default=django.utils.timezone.now)
-	def sortableDate(self):
-		return self.date.strftime('%y%m%d%H%M%S')
+	def changeableDate(self):
+		return self.date.strftime('%Y-%m-%d %H:%M:%S UTC')
 	def __str__(self):
 		if len(self.content)>32:
 			return self.content[:32]+'...'

@@ -1,14 +1,45 @@
+body{
+    background: #E3F6E3 url("images/background.jpg");
+}
+
+button {
+    background-color: #5CDD5C;
+    
+}
+#header {
+    margin: auto;
+    width: 75%;
+    text-align: center;
+    background-color: #5CDD5C;
+    border: 3px solid #274A9C;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#header a{
+    padding: 5px;
+    background-color: #274A9C;
+    color: #F0FFF0;
+    font-size: large;
+}
+
 .statement{
 	margin: 10 auto;
     width: 50%;
-    border: 3px solid green;
+    border: 3px solid #274A9C;
     padding: 10px;
+    background-color: #ADEDED;
+    border-radius: 10px;
 }
 
-.compose{
+#compose{
     width:50%;
-    margin: auto;
-    border: 10px solid blue;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 10px solid #274A9C;
     border-radius: 10px;
     text-align: center;
+    background-color: #ADEDED;
 }
+

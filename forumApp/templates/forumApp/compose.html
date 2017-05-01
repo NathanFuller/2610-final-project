@@ -1,11 +1,15 @@
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'forumApp/myStyle.css' %}"/>
-<div class="compose">
+<div id="header">
+	<h1>Make Your Statement</h1>
+	<p><a href="/forumApp">I want to go back!</a></p>
+</div>
+<div id="compose">
 	<form action="/forumApp/save" method="POST">
 		{% csrf_token %}
 		<label for="author">Username:</label><br/>
 		<input type="text" id="author" name="auth"><br/>
-		<label for="statement">Your words:</label><br/>
+		<label for="statement">What do you want to say?</label><br/>
 		<textarea name="content" id="statement" style="width:250px;height:150px;"></textarea><br/>
 		<input type="submit" value="Submit">
 	</form>
